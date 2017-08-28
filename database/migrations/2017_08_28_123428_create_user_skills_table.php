@@ -19,6 +19,7 @@ class CreateUserSkillsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skills');
+            $table->primary(['skill_id', 'user_id']);
             $table->timestamps();
         });
     }

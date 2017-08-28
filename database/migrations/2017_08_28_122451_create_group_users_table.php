@@ -19,6 +19,7 @@ class CreateGroupUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('groups');
+            $table->primary(['group_id', 'user_id']);
             $table->timestamps();
         });
     }
