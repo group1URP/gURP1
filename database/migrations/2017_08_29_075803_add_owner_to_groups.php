@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration
+class AddOwnerToGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('groups', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('business_name');
-            $table->string('business_type');
-            //TODO: add other data
-            $table->timestamps();
         });
     }
 
@@ -31,6 +26,7 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropForeign('groups_user_id_foreign');
+        Schema::dropIfExists('user_id');
     }
 }

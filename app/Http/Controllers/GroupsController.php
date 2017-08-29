@@ -48,7 +48,10 @@ class GroupsController extends Controller
         $group = new Group;
         $group->name = $request->input('name');
         $group->max_size = $request->input('max_size');
+        $group->user_id = auth()->user()->id;
         $group->save();
+
+        $group->users()->attach(auth()->user()->id);
 
         return redirect('/home');
     }
