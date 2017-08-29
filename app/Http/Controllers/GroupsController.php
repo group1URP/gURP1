@@ -39,6 +39,18 @@ class GroupsController extends Controller
     public function store(Request $request)
     {
         //
+         //
+        $this->validate($request,[
+            'name' => 'required',
+            'max_size' => 'required'
+        ]);
+
+        $group = new Group;
+        $group->name = $request->input('name');
+        $group->max_size = $request->input('max_size');
+        $group->save();
+
+        return redirect('/home');
     }
 
     /**
@@ -77,7 +89,7 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**
