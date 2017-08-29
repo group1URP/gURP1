@@ -18,7 +18,7 @@
         <div class="col-md-6 col-sm-6">
             <h2>Create a new project</h2>
             <p>Create a new project and find a group to help you making it</p>
-            <a class="btn btn-primary" href="/groups/create">Create Project</a>
+            <a class="btn btn-primary" href="/projects/create">Create Project</a>
         </div>
     </div>
     <hr>
