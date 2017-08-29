@@ -40,7 +40,17 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required'
+        ]);
 
+        $project = new Project;
+        $project->title = $request->input('title');
+        $project->description = $request->input('description');
+        $project->save();
+
+        return redirect('/projects');
     }
 
     /**
@@ -78,7 +88,17 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $project = Project::find($id);
+        $project->title = $request->input('title');
+        $project->description = $request->input('description');
+        $project->save();
+
+        return redirect('/projects');
     }
 
     /**
@@ -89,6 +109,10 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+
+        $project->delete();
+
+        return redirect('/projects');
     }
 }
