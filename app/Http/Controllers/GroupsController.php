@@ -89,7 +89,22 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
+        $this->validate($request,[
+            'name' => 'required',
+            'max_size' => 'required'
+        ]);
+        $group = Group::find($id);
+
+        $group->name = $request->input('name');
+        $group->max_size = $request->input('max_size');
+        $group->save();
+
+        return redirect('/groups');
+
+
+
+
     }
 
     /**
@@ -100,6 +115,10 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group = Group::find($id);
+
+        $group->delete();
+
+        return redirect('/groups');
     }
 }
