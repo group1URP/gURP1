@@ -11,10 +11,7 @@
         {{Form::label('description', 'Description')}}
         {{Form::textarea('description', $project->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
-    <div class="form-group">
-        {{Form::label('is_confirmed', 'Is confirmed')}}
-        {{Form::checkbox('is_confirmed', $project->is_confirmed, ['class' => 'form-control'])}}
-    </div>
+
     {{Form::submit('submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 
