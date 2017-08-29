@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use Illuminate\Http\Request;
 
 class GroupsController extends Controller
@@ -14,6 +15,9 @@ class GroupsController extends Controller
     public function index()
     {
         //
+        $groups = Group::all();
+
+        return view('groups.index')->with('groups',$groups);
     }
 
     /**
@@ -23,7 +27,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.create');
     }
 
     /**
@@ -46,6 +50,8 @@ class GroupsController extends Controller
     public function show($id)
     {
         //
+        $group = Group::find($id);
+        return view('groups.show')->with('group',$group);
     }
 
     /**
@@ -57,6 +63,9 @@ class GroupsController extends Controller
     public function edit($id)
     {
         //
+        $group = Group::find($id);
+
+        return view('groups.edit')->with('group',$group);
     }
 
     /**

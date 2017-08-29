@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -14,6 +15,10 @@ class ProjectsController extends Controller
     public function index()
     {
         //
+        $projects = Project::all();
+
+        return view('projects.index')->with('projects',$projects);
+
     }
 
     /**
@@ -24,6 +29,7 @@ class ProjectsController extends Controller
     public function create()
     {
         //
+        return view('projects.create');
     }
 
     /**
@@ -46,6 +52,8 @@ class ProjectsController extends Controller
     public function show($id)
     {
         //
+        $project = Project::find($id);
+        return view('projects.show')->with('project',$project);
     }
 
     /**
@@ -57,6 +65,8 @@ class ProjectsController extends Controller
     public function edit($id)
     {
         //
+        $project = Project::find($id);
+        return view('projects.edit')->with('project',$project);
     }
 
     /**
