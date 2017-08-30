@@ -57,5 +57,17 @@ class User extends Authenticatable
         return $this->hasOne('App\Developer');
     }
 
+    /*
+    //checking if the user is a client or a developer
+    public function userRole(){
+        if ($this->client()->where('id', $this->id)->first()){
+            return "client";
+        } else {
+            return "developer";
+        }
+    }
+    */
+
+
 
 }

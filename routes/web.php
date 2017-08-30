@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('groups','GroupsController');
-Route::resource('projects','ProjectsController');
+
+Route::resource('groups', 'GroupsController', [
+    'middleware' =>  'developer',
+]);
+
+Route::resource('projects', 'ProjectsController', [
+    'middleware' =>  'client',
+]);
+
 Route::get('/home', 'HomeController@index')->name('home');

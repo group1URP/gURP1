@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -28,7 +29,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+
         return view('projects.create');
     }
 
@@ -48,8 +49,9 @@ class ProjectsController extends Controller
         $project = new Project;
         $project->title = $request->input('title');
         $project->description = $request->input('description');
+        $project->user_id = auth()->user()->id;
         $project->save();
-
+        $project->users()->attach(auth()->user()->id);
         return redirect('/projects');
     }
 
