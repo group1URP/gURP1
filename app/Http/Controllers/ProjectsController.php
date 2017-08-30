@@ -51,7 +51,6 @@ class ProjectsController extends Controller
         $project->description = $request->input('description');
         $project->user_id = auth()->user()->id;
         $project->save();
-        $project->users()->attach(auth()->user()->id);
         return redirect('/projects');
     }
 
