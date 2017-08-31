@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Project;
-use App\User;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -64,6 +66,9 @@ class ProjectsController extends Controller
     {
         //
         $project = Project::find($id);
+        if(!$project){
+          return  redirect('/projects');
+        }
         return view('projects.show')->with('project',$project);
     }
 

@@ -17,27 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-/*
-Route::resource('groups', 'GroupsController', [
-    'middleware' =>  'developer',
-]);
-*/
 
-Route::group(['middleware' => 'developer'], function()
-{
-    Route::resource('groups', 'GroupsController');
-    Route::resource('projects', 'ProjectsController',['except' =>['create', 'edit', 'store', 'update', 'destroy']]);
+Route::resource('groups', 'GroupsController', ['middleware' => 'role']);
 
-});
-/*
-Route::resource('projects', 'ProjectsController', [
-    'middleware' =>  'client',
-]);
-*/
 
-Route::group(['middleware' => 'client'], function()
-{
-    Route::resource('projects', 'ProjectsController', ['except' => ['index']]);
-});
+
+Route::resource('projects', 'ProjectsController', ['middleware' => 'role' ]);
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
