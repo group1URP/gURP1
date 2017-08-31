@@ -17,13 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::resource('groups', 'GroupsController', ['middleware' => 'role']);
-
-
-
 Route::resource('projects', 'ProjectsController', ['middleware' => 'role' ]);
 
+Route::post('/projects/proposal/{projectID}','ProjectsController@submitProposal');
 
 
 

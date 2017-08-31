@@ -4,7 +4,9 @@
     <a href="/groups" class="btn btn-default">Go Back</a>
     <h1>{{$group->name}}</h1>
     <hr>
-    <small>Created on {{$group->created_at}} </small>
+    @if ($group->description)
+        <p>{{$group->description}}</p>
+    @endif
     <hr>
     <a href="/groups/{{$group->id}}/edit" class="btn btn-default">Edit</a>
 

@@ -48,6 +48,12 @@ class GroupsController extends Controller
         $group = new Group;
         $group->name = $request->input('name');
         $group->max_size = $request->input('max_size');
+
+        if($request->input('description') != null)
+        {
+            $group->description = $request->input('description');
+        }
+
         $group->user_id = auth()->user()->id;
         $group->save();
 
@@ -97,17 +103,19 @@ class GroupsController extends Controller
             'name' => 'required',
             'max_size' => 'required'
         ]);
-        $group = Group::find($id);
 
+        $group = Group::find($id);
         $group->name = $request->input('name');
         $group->max_size = $request->input('max_size');
+
+        if($request->input('description') != null)
+        {
+            $group->description = $request->input('description');
+        }
+
         $group->save();
 
         return redirect('/groups');
-
-
-
-
     }
 
     /**

@@ -18,4 +18,9 @@ class Project extends Model
         return $this->belongsTo('App\Group');
     }
 
+    public function proposals()
+    {
+    	return $this->hasMany('App\Proposal');
+    }
+
 }

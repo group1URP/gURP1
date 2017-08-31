@@ -12,9 +12,19 @@ class Group extends Model
         return $this->belongsToMany('App\User');
     }
 
-    public function project()
+    public function projects()
     {
     	return $this->hasMany('App\Project');
+    }
+
+    public function proposals()
+    {
+    	return $this->hasMany('App\Proposal');
+    }
+
+    public function hasProposal($id)
+    {
+    	return $this->find($id);
     }
 
 }
