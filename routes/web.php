@@ -26,7 +26,7 @@ Route::resource('groups', 'GroupsController', [
 Route::group(['middleware' => 'developer'], function()
 {
     Route::resource('groups', 'GroupsController');
-    Route::resource('projects', 'ProjectsController',['except' =>['create', 'edit']]);
+    Route::resource('projects', 'ProjectsController',['except' =>['create', 'edit', 'store', 'update', 'destroy']]);
 
 });
 /*
