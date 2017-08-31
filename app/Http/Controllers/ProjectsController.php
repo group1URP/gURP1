@@ -95,7 +95,7 @@ class ProjectsController extends Controller
         }
 
         return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposals',$allProposals[0]->proposals);
-    }}
+    }
 
     /**
      * Show the form for editing the specified resource.
