@@ -14,7 +14,7 @@ class AddProposalTable extends Migration
     public function up()
     {
         Schema::create('proposals', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
             $table->string('details');
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
