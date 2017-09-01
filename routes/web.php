@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+
 Auth::routes();
 
 Route::resource('groups', 'GroupsController', ['middleware' => 'role']);

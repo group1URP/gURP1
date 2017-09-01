@@ -6,6 +6,7 @@ use App\Project;
 use Illuminate\Http\Request;
 
 
+
 class ProjectsController extends Controller
 {
 
@@ -19,9 +20,13 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-        $projects = Project::all();
+
+
+        $projects = Project::where('is_private', 0)->get();
 
         return view('projects.index')->with('projects',$projects);
+
+
 
     }
 
@@ -72,10 +77,14 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
+
+
+
+
         // get the group id of the available proposals for the project
         $project = Project::with(array('proposals'=>function($query){
         $query->select('project_id','group_id');
-    }))->where('id',$id)->get();      
+    }))->where('id',$id)->where('is_private', 0)->get();
 
         if(!$project){
           return  redirect('/projects');
@@ -102,7 +111,13 @@ class ProjectsController extends Controller
             }
         }
 
+
+
+
         return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposals',$allProposals[0]->proposals);
+
+
+
     }
 
     /**
@@ -136,6 +151,8 @@ class ProjectsController extends Controller
         $project->title = $request->input('title');
         $project->description = $request->input('description');
         $project->save();
+
+
 
         return redirect('/projects');
     }

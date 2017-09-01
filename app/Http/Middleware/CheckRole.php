@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 use Auth;
-
 use Closure;
 
 class CheckRole
@@ -16,6 +15,7 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
+
 
             if (Auth::check() && Auth::user()->is_client ) {
 
@@ -49,9 +49,17 @@ class CheckRole
 
 
             }
+            $routeName = $request->route()->getName() ;
+            switch ($routeName){
+                case 'projects.index':
+                case 'projects.show':
+                    return $next($request);
+                    break;
+            }
 
 
-                return redirect('/home');
+
+
 
 
 
