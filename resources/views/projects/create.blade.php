@@ -12,7 +12,12 @@
         {{Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'Description'])}}
     </div>
 
-    {{Form::submit('submit', ['class' => 'btn btn-primary'])}}
+    <div class="form_group">
+        {{Form::checkbox('private')}}
+        {{Form::label('private', 'Private')}}
+    </div>
+
+{{Form::submit('submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 
 

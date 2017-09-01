@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use Illuminate\Http\Request;
 
+
 class ProjectsController extends Controller
 {
 
@@ -52,6 +53,13 @@ class ProjectsController extends Controller
         $project->title = $request->input('title');
         $project->description = $request->input('description');
         $project->user_id = auth()->user()->id;
+
+        $checkbox_value = $request['private'];
+        if ($checkbox_value === null ) {
+            $project->is_private = false;
+        } else {
+            $project->is_private = $request->input('private');
+        }
         $project->save();
         return redirect('/projects');
     }
