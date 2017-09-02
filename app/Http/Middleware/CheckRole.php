@@ -42,6 +42,7 @@ class CheckRole
                     case 'projects.update':
                     case 'projects.store':
                     case 'projects.destroy':
+                    case 'projects.edit':
                         return redirect('/dashboard');
                         break;
                 }

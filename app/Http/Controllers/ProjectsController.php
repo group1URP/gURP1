@@ -142,6 +142,10 @@ class ProjectsController extends Controller
     {
         //
         $project = Project::find($id);
+        if(auth()->user()->id !== $project->user_id){
+            return redirect('/dashboard');
+
+        }
         return view('projects.edit')->with('project',$project);
     }
 

@@ -14,7 +14,7 @@
     <div class="form_group">
         {{Form::checkbox('private')}}
         {{Form::label('private', 'Private', $project->is_private)}}
-    </div> 
+    </div>
 
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('submit', ['class' => 'btn btn-primary'])}}
