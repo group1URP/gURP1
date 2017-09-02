@@ -27,6 +27,7 @@ class CheckRole
                     case 'projects.destroy':
                     case 'projects.show':
                     case 'projects.index':
+                    case 'projects.edit':
                         return $next($request);
                         break;
                 }
