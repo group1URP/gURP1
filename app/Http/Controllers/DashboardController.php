@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Project;
+use App\Group;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (auth()->user()->is_client) {
+             return view('client_dashboard')->with('projects',auth()->user()->projects);
+        } else {
+             return view('dev_dashboard')->with('groups',auth()->user()->groups);
+        }
+        
+
+       
     }
 }

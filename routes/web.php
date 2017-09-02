@@ -23,7 +23,8 @@ Route::resource('groups', 'GroupsController', ['middleware' => 'role']);
 Route::resource('projects', 'ProjectsController', ['middleware' => 'role' ]);
 
 Route::post('/projects/proposal/{projectID}','ProjectsController@submitProposal');
+Route::get('/projects/proposal/accept/{projectID}/{groupID}','ProjectsController@acceptProposal');
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('home');

@@ -26,11 +26,12 @@ class CheckRole
                     case 'projects.store':
                     case 'projects.destroy':
                     case 'projects.show':
+                    case 'projects.index':
                         return $next($request);
                         break;
                 }
 
-                return redirect('/home');
+                return redirect('/dashboard');
             }
             if (Auth::check() && !Auth::user()->is_client ){
 
@@ -40,7 +41,7 @@ class CheckRole
                     case 'projects.update':
                     case 'projects.store':
                     case 'projects.destroy':
-                        return redirect('/home');
+                        return redirect('/dashboard');
                         break;
                 }
 

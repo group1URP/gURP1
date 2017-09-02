@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>projects</h1>
+    <h1>Projects</h1>
     @if(count($projects) > 0)
         @foreach($projects as $project)
-            <h3><a href="/projects/{{$project->id}}">{{$project->title}}</a></h3>
+            <h3><a href="/projects/{{$project->id}}">{{$project->title}}</a> 
+            @if ($project->is_private)
+                <span class="private pull-right">Private</span>
+            @endif
+            </h3>
             <br>
             <p>{{$project->description}}</p>
-            <small>Created on {{$project->created_at}}
+            <small>Posted on {{$project->created_at}}</small>
         @endforeach
     @else
         <p>No projects found</p>
