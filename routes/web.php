@@ -29,5 +29,10 @@ Route::get('/projects/proposal/accept/{projectID}/{groupID}','ProjectsController
 
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 
+//clients profile
+Route::get('/client/{id}', 'UsersController@showClientProfile');
+Route::put('/client/edit/{id}', 'UsersController@editClientProfile');
 
-Route::get('/client/{id}', 'UsersController@showClientProfile') ;
+//developers profiles
+Route::get('/developer/edit/{id}', 'UsersController@showDeveloperProfile');
+Route::put('/developer/edit/{id}', 'UsersController@editDeveloperProfile');

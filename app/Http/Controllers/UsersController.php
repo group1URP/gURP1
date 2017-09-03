@@ -17,8 +17,23 @@ class UsersController extends Controller
         $user = User::find($id);
         return view('profiles.client_profile')->with('user', $user);
 
+    }
 
+    public function editClientProfile($id){
+        //i will finish it later
+        return ('profiles.client_profile_edit');
+    }
 
+    public function showDeveloperProfile($id){
+
+        $user = User::find($id);
+        return view('profiles.dev_profile')->with('user', $user);
+
+    }
+
+    public function editDeveloperProfile($id){
+        //i will finish it later
+        return ('profiles.dev_profile_edit');
     }
 
 
