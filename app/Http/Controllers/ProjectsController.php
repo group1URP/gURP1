@@ -164,6 +164,9 @@ class ProjectsController extends Controller
         ]);
 
         $project = Project::find($id);
+        if(auth()->user()->id !== $project->user_id){
+            return redirect('/dashboard');
+        }
         $project->title = $request->input('title');
         $project->description = $request->input('description');
         $checkbox_value = $request['private'];
@@ -188,6 +191,9 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
+        if(auth()->user()->id !== $project->user_id){
+            return redirect('/dashboard');
+        }
 
         $project->delete();
 
