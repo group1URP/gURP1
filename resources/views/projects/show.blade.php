@@ -25,7 +25,8 @@
 
         @endif
         @if ($project->has_group)
-           <h2>has group</h2>
+           <h3>Development Group: {{ $proposal->group->name }} </h3>         
+           
         @elseif (Auth::user()->is_client && count($proposals) > 0)
             <h2>Proposals</h2>
             @foreach ($proposals as $proposal)

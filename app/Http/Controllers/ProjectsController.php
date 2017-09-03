@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Proposal;
 use Illuminate\Http\Request;
 
 
@@ -86,7 +87,7 @@ class ProjectsController extends Controller
 
 
         if (auth()->guest()) {
-            $project = Project::where('is_private', 0)->get();
+            $project = Project::where(['is_private' => 0, 'id'=>$id])->get();
             
             if(!$project){
                 return  redirect('/projects');
@@ -100,6 +101,13 @@ class ProjectsController extends Controller
             $project = Project::with(array('proposals'=>function($query){
                 $query->select('project_id','group_id');
             }))->where('id',$id)->get();
+
+            if ($project[0]->has_group) {
+
+                $acceptedProposal = Proposal::where(['project_id' =>$project[0]->id, 'group_id' => $project[0]->group_id])->get();
+                return view('projects.show')->with('project',$project[0])->with("proposal",$acceptedProposal[0]);                
+               
+            }             
 
 
             // find all the proposal made on project with the data of the group that made it
@@ -159,8 +167,7 @@ class ProjectsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' => 'required',
-            'description' => 'required'
+            'title' => 'required'            
         ]);
 
         $project = Project::find($id);
@@ -168,7 +175,12 @@ class ProjectsController extends Controller
             return redirect('/dashboard');
         }
         $project->title = $request->input('title');
-        $project->description = $request->input('description');
+
+        if (strlen($request->input('extra_details')) > 0)        
+        {
+            $project->extra_details = $request->input('extra_details');   
+        }
+
         $checkbox_value = $request['private'];
         if ($checkbox_value === null ) {
             $project->is_private = false;
