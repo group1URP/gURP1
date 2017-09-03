@@ -10,11 +10,11 @@
     @endif
     <hr>
 
-    <small>Posted on {{$project->created_at}} </small>
+    <small>Posted on {{$project->created_at}}  Created by <a class ="btn btn-link" href="/client/{{$project->user->id}}">{{$project->user->username}}</a> </small>
     <hr>
 
     @if (!Auth::guest())        
-
+        @if (Auth::user()->id == $project->user_id)
         <a href="/projects/{{$project->id}}/edit" class="btn btn-default">Edit</a>
         <a href="#" class="btn btn-success">Confirm</a>
 
@@ -23,9 +23,10 @@
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
         {!!Form::close() !!}
 
-
+        @endif
         @if ($project->has_group)
-           <h2>has group</h2>
+           <h3>Development Group: {{ $proposal->group->name }} </h3>         
+           
         @elseif (Auth::user()->is_client && count($proposals) > 0)
             <h2>Proposals</h2>
             @foreach ($proposals as $proposal)

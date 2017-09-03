@@ -27,6 +27,7 @@ class CheckRole
                     case 'projects.destroy':
                     case 'projects.show':
                     case 'projects.index':
+                    case 'projects.edit':
                         return $next($request);
                         break;
                 }
@@ -41,6 +42,7 @@ class CheckRole
                     case 'projects.update':
                     case 'projects.store':
                     case 'projects.destroy':
+                    case 'projects.edit':
                         return redirect('/dashboard');
                         break;
                 }
