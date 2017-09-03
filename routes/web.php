@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-
+//landingpage
+Route::get('/', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/browse', 'PagesController@browse');
+Route::get('/feed', 'PagesController@feed');
 
 Auth::routes();
 

@@ -1,0 +1,62 @@
+//cover
+$cover-bg: darkorange;
+
+//text
+$orange-text: darkorange;
+$white-text: #ffffff;
+
+
+body {
+    margin: 0%;
+    min-height: 100%;
+    background-color: lightgrey;
+
+    .btn-custom {
+        margin-top: 5px;
+        margin-left: 10px;
+        border-width: 1px;
+        border-color: #ffffff;
+        border-radius: 5px;
+        background-color: transparent;
+        text-decoration: none;
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+    }
+
+    #cover {
+        padding-top: 33%;
+        margin-top: -6%;
+        min-height: 100%;
+        min-width: 100%;
+        background: $cover-bg;
+
+        .signUp {
+            width: 150px;
+            height: auto;
+            padding: 9px;
+            padding-right: 10px;
+            padding-left: 10px;
+            color: $orange-text;
+            margin: 30px;
+
+            a {
+                text-decoration-color: $orange-text;
+                color: $orange-text;
+                text-decoration: none;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+.white-text {
+    color: #ffffff !important;
+}
+
+.orange-text {
+    color: $orange-text !important;
+}

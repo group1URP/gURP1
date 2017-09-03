@@ -5688,8 +5688,8 @@ tbody.collapse.in {
 }
 
 .navbar-default {
-  background-color: #fff;
-  border-color: #d3e0e9;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .navbar-default .navbar-brand {
@@ -5720,7 +5720,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555;
-  background-color: #eeeeee;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .disabled > a,
@@ -5745,13 +5745,13 @@ tbody.collapse.in {
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d3e0e9;
+  border-color: transparent;
 }
 
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #eeeeee;
+  background-color: transparent;
   color: #555;
 }
 
@@ -5770,7 +5770,7 @@ tbody.collapse.in {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #eeeeee;
+    background-color: transparent;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -8348,6 +8348,61 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+body {
+  margin: 0%;
+  min-height: 100%;
+  background-color: lightgrey;
+}
+
+body .btn-custom {
+  margin-top: 5px;
+  margin-left: 10px;
+  border-width: 1px;
+  border-color: #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+body .btn-custom a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+body #cover {
+  padding-top: 33%;
+  margin-top: -6%;
+  min-height: 100%;
+  min-width: 100%;
+  background: darkorange;
+}
+
+body #cover .signUp {
+  width: 150px;
+  height: auto;
+  padding: 9px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: darkorange;
+  margin: 30px;
+}
+
+body #cover .signUp a {
+  -webkit-text-decoration-color: darkorange;
+          text-decoration-color: darkorange;
+  color: darkorange;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.white-text {
+  color: #ffffff !important;
+}
+
+.orange-text {
+  color: darkorange !important;
 }
 
 .private {

@@ -15,12 +15,12 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top white-text">
             <div class="container">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <button type="button" class="navbar-toggle collapsed white-text" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -28,14 +28,14 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand white-text" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav white-text">
                         &nbsp;
                     </ul>
 
@@ -43,23 +43,26 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a class='white-text' href="/feed">Feed</a></li>
+                            <li><a class='white-text' href="/browse">Browse</a></li>
+                            <li><a class='white-text' href="/about">About Us</a></li>
+                            <li><button type="button" class="btn btn-custom"><a type="button" class='white-text' href="{{ route('login') }}">Login</a></button></li>
+                            <!---<li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu white-text" role="menu">
                                     <li>
-                                        <a href="{{ route('home') }}">
+                                        <a class='white-text' href="{{ route('home') }}">
                                             Dashboard
                                         </a>
 
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a class='white-text' href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -76,7 +79,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="">
             @yield('content')
         </div>
 
