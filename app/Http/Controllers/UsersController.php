@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
-use App\Client;
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -30,14 +30,13 @@ class UsersController extends Controller
 
     public function updateClientProfile(Request $request, $id){
 
-        $user_id = auth()->user()->id;
-        $client = Client::find($user_id);
+        $client = User::find($id)->client;
 
         $client->business_name = $request->input('business_name');
         $client->business_type = $request->input('business_type');
 
 
-        $client->save();
+        $client->update();
         return redirect("/dashboard");
     }
 

@@ -10,7 +10,7 @@
 
     <div class="form-group">
         {{Form::label('business_type', 'Business Type')}}
-        {{Form::text('business_Type', $user->client->business_type, ['class' => 'form-control', 'placeholder' => 'Business Type'])}}
+        {{Form::text('business_type', $user->client->business_type, ['class' => 'form-control', 'placeholder' => 'Business Type'])}}
     </div>
 
     {{Form::hidden('_method', 'PUT')}}
@@ -19,4 +19,4 @@
 
 
 
-@endsection 
+@endsection
