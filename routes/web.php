@@ -28,3 +28,6 @@ Route::get('/projects/proposal/accept/{projectID}/{groupID}','ProjectsController
 
 
 Route::get('/dashboard', 'DashboardController@index')->name('home');
+
+
+Route::get('/client/{id}', 'UsersController@showClientProfile') ;

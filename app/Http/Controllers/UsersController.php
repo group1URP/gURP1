@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\User;
 
 class UsersController extends Controller
 {
@@ -11,6 +12,18 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function showClientProfile($id){
+
+        $user = User::find($id);
+        return view('profiles.client_profile')->with('user', $user);
+
+
+
+    }
+
+
+
+
     public function index()
     {
         //
