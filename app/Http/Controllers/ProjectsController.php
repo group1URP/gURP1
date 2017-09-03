@@ -159,13 +159,17 @@ class ProjectsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' => 'required',
-            'description' => 'required'
+            'title' => 'required'            
         ]);
 
         $project = Project::find($id);
         $project->title = $request->input('title');
-        $project->description = $request->input('description');
+
+        if (strlen($request->input('extra_details')) > 0)        
+        {
+            $project->extra_details = $request->input('extra_details');   
+        }
+
         $checkbox_value = $request['private'];
         if ($checkbox_value === null ) {
             $project->is_private = false;
