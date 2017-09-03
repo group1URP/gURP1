@@ -31,7 +31,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('home');
 
 //clients profile
 Route::get('/client/{id}', 'UsersController@showClientProfile');
-Route::put('/client/edit/{id}', 'UsersController@editClientProfile');
+Route::get('/client/edit/{id}', 'UsersController@editClientProfile');
+Route::put('/client/{id}', 'UsersController@updateClientProfile');
 
 //developers profiles
 Route::get('/developer/edit/{id}', 'UsersController@showDeveloperProfile');

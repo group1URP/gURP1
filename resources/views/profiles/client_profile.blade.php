@@ -10,7 +10,7 @@
                     <img src="#" alt="profile pic">
                 </div>
                 @if (Auth::user()->id == $user->client->user_id)
-                    <a class ="btn btn-link" href="#"><small>Edit profile</small></a>
+                    <a class ="btn btn-link" href="/client/edit/{{$user->id}}"><small>Edit profile</small></a>
                 @endif
             </div>
             <div class="col-md-8 col-sm-8">

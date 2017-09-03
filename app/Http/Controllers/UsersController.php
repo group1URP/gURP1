@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use App\Client;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -12,6 +14,8 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //client methods------------------------------------------------------------
     public function showClientProfile($id){
 
         $user = User::find($id);
@@ -20,10 +24,26 @@ class UsersController extends Controller
     }
 
     public function editClientProfile($id){
-        //i will finish it later
-        return ('profiles.client_profile_edit');
+        $user = User::find($id);
+        return view('profiles.client_profile_edit')->with('user', $user);
     }
 
+    public function updateClientProfile(Request $request, $id){
+
+        $user_id = auth()->user()->id;
+        $client = Client::find($user_id);
+
+        $client->business_name = $request->input('business_name');
+        $client->business_type = $request->input('business_type');
+
+
+        $client->save();
+        return redirect("/dashboard");
+    }
+
+
+
+    //developer methods---------------------------------------------------------
     public function showDeveloperProfile($id){
 
         $user = User::find($id);
@@ -32,9 +52,11 @@ class UsersController extends Controller
     }
 
     public function editDeveloperProfile($id){
-        //i will finish it later
+        $user = User::find($id);
         return ('profiles.dev_profile_edit');
     }
+
+
 
 
 
