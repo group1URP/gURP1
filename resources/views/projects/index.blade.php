@@ -11,7 +11,7 @@
             </h3>
             <br>
             <p>{{$project->description}}</p>
-            <small>Posted on {{$project->created_at}}</small>
+            <small>Posted on {{$project->created_at}} Created by <a class ="btn btn-link" href="/client/{{$project->user->id}}">{{$project->user->username}}</a></small>
         @endforeach
     @else
         <p>No projects found</p>
