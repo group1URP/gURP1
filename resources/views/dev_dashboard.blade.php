@@ -54,7 +54,7 @@
                             </tbody> 
                         </table>    
                     @else
-                        <h3>You have no groups</h3>
+                        <h3>You have no proposals</h3>
                     @endif
                 </div>
             </div>
