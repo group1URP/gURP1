@@ -95,7 +95,7 @@ class ProjectsController extends Controller
 
             return view('projects.show')->with('project',$project[0]);
 
-        } else {
+        } elseif (auth()->user()->is_client) {
 
             // get the group id of the available proposals for the project
             $project = Project::with(array('proposals'=>function($query){
@@ -135,9 +135,35 @@ class ProjectsController extends Controller
               return  redirect('/projects');
             }
 
+
+
             return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposals',$allProposals[0]->proposals);
 
-            }        
+            } else {
+            $project = Project::with(array('proposals'=>function($query){
+                $query->select('project_id','group_id');
+            }))->where('id',$id)->get();
+
+            $user =  auth()->user()->load(['groupOwner', 'groupOwner.proposals']);
+            $props = array();
+
+            foreach ($user->groupOwner as $group) {
+                foreach ($group->proposals as $p) {
+                    array_push($props,$p);
+                }
+            }
+            $proposalsForDeveloper = array();
+            foreach ($props as $proposal){
+                if ($proposal->group_id == $project[0]->group_id){
+                    array_push($proposalsForDeveloper, $proposal);
+                }
+            }
+
+            return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposalsForDeveloper',$proposalsForDeveloper);
+
+
+        }
+
     }
 
     /**
@@ -249,5 +275,21 @@ class ProjectsController extends Controller
             return redirect('/projects');
         }
         
+    }
+
+    public function cancelProposal($projectID, $proposalID){
+        $project = Project::find($projectID);
+        $proposal = Proposal::find($proposalID);
+        // check that the logged in user owns the project
+        if ($project->user_id == auth()->user()->id && $project->has_group) {
+            $project->has_group = false;
+            $project->group_id = null;
+            $project->save();
+            $proposal->delete();
+            return redirect('/projects/'.$projectID);
+
+        } else {
+            return redirect('/projects');
+        }
     }
 }

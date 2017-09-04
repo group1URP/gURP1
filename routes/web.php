@@ -19,15 +19,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+//resources
 Route::resource('groups', 'GroupsController', ['middleware' => 'role']);
 Route::resource('projects', 'ProjectsController', ['middleware' => 'role' ]);
 
+//dashboard
+Route::get('/dashboard', 'DashboardController@index')->name('home');
+
+//proposals
 Route::post('/projects/proposal/{projectID}','ProjectsController@submitProposal');
 Route::get('/projects/proposal/accept/{projectID}/{groupID}','ProjectsController@acceptProposal');
+Route::match(['get', 'delete'], '/projects/proposal/cancel/{projectID}/{proposalID}','ProjectsController@cancelProposal');
 
 
 
-Route::get('/dashboard', 'DashboardController@index')->name('home');
 
 //clients profile
 Route::get('/client/{id}', 'UsersController@showClientProfile');

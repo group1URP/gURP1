@@ -52,7 +52,7 @@ class UsersController extends Controller
 
     public function editDeveloperProfile($id){
         $user = User::find($id);
-        return ('profiles.dev_profile_edit');
+        return ('profiles.dev_profile_edit')->with('user', $user);
     }
 
 

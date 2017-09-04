@@ -13,7 +13,11 @@
     <small>Posted on {{$project->created_at}}  Created by <a class ="btn btn-link" href="/client/{{$project->user->id}}">{{$project->user->username}}</a> </small>
     <hr>
 
-    @if (!Auth::guest())        
+    @if (!Auth::guest())
+            @foreach($proposalsForDeveloper as $proposalForDeveloper)
+                <h3>{{ $proposalForDeveloper->group->name }} - {{ $proposalForDeveloper->details }} <a href="/projects/proposal/cancel/{{$project->id}}/{{$proposalForDeveloper->id}}" class="btn btn-danger pull-right">Cancel</a></h3>
+            @endforeach
+
         @if (Auth::user()->id == $project->user_id)
             <a href="/projects/{{$project->id}}/edit" class="btn btn-default">Edit</a>
             <a href="#" class="btn btn-success">Confirm</a>
@@ -32,6 +36,7 @@
                     <h3>{{ $proposal->group->name }} - {{ $proposal->details }} <a href="/projects/proposal/accept/{{$project->id}}/{{$proposal->group->id}}" class="btn btn-success pull-right">Accept</a></h3>
                     <p>{{ $proposal->details }}</p>
                 @endforeach
+
             @endif
         
         @elseif (!Auth::user()->is_client && count($groups) > 0)
