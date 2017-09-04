@@ -28,7 +28,18 @@ class DashboardController extends Controller
         if (auth()->user()->is_client) {
              return view('client_dashboard')->with('projects',auth()->user()->projects);
         } else {
-             return view('dev_dashboard')->with('groups',auth()->user()->groups);
+            $user =  auth()->user()->load(['groupOwner', 'groupOwner.proposals']);
+            $props = array();
+
+            foreach ($user->groupOwner as $group) {                
+                foreach ($group->proposals as $p) {
+                    array_push($props,$p);
+                }
+            }
+
+            // return gettype($props[0]);
+            // return $props;
+             return view('dev_dashboard')->with('groups',auth()->user()->groups)->with('proposals',$props);
         }
         
 

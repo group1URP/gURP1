@@ -35,6 +35,27 @@
                     @else
                         <h3>You have no groups</h3>
                     @endif
+
+
+                    <h2>Proposals</h2>
+                    @if (count($proposals) > 0)
+                        <table class="table table-striped">
+                            <tbody> 
+                                @foreach ($proposals as $proposal)
+                                    <tr> <td><a href="/proposal/{{$proposal->id}}">{{$proposal->details}}</a></td> <td><a class="btn btn-warning" href="/proposal/{{ $group->id }}/edit">Edit</a></td> 
+                                    <td>
+                                        {!! Form::open(['action' => ['GroupsController@destroy',$proposal->id], 'method' => 'POST']) !!}     
+                                        {{ Form::hidden('_method',"DELETE") }} 
+                                        {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
+                                        {!! Form::close() !!}
+
+                                    </td> </tr>  
+                                @endforeach
+                            </tbody> 
+                        </table>    
+                    @else
+                        <h3>You have no groups</h3>
+                    @endif
                 </div>
             </div>
         </div>

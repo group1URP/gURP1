@@ -59,7 +59,7 @@ class GroupsController extends Controller
 
         $group->users()->attach(auth()->user()->id);
 
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 
     /**
