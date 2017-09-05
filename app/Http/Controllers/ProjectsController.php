@@ -284,7 +284,7 @@ class ProjectsController extends Controller
         if ($project->user_id == auth()->user()->id && $project->has_group) {
             $project->has_group = false;
             $project->group_id = null;
-            $project->save();
+            $project->update();
             $proposal->delete();
             return redirect('/projects/'.$projectID);
 

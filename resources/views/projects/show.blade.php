@@ -14,9 +14,18 @@
     <hr>
 
     @if (!Auth::guest())
+        @if (!Auth::user()->is_client)
             @foreach($proposalsForDeveloper as $proposalForDeveloper)
-                <h3>{{ $proposalForDeveloper->group->name }} - {{ $proposalForDeveloper->details }} <a href="/projects/proposal/cancel/{{$project->id}}/{{$proposalForDeveloper->id}}" class="btn btn-danger pull-right">Cancel</a></h3>
+                {!! Form::open(['action' => ['ProjectsController@cancelProposal', $project->id, $proposalForDeveloper->id], 'method' =>'POST'])!!}
+                {{Form::hidden('_method', 'PATCH')}}
+                {{Form::hidden('_method', 'DELETE')}}
+                <h3 class="pull-left">{{ $proposalForDeveloper->group->name }} - {{ $proposalForDeveloper->details }}</h3>
+                {{Form::submit('Cancel', ['class' => 'pull-right btn btn-danger'])}}
+                {!!Form::close() !!}
             @endforeach
+        @endif
+
+
 
         @if (Auth::user()->id == $project->user_id)
             <a href="/projects/{{$project->id}}/edit" class="btn btn-default">Edit</a>
