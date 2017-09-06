@@ -30,8 +30,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('home');
 //proposals
 Route::post('/projects/proposal/{projectID}','ProjectsController@submitProposal');
 Route::get('/projects/proposal/accept/{projectID}/{groupID}','ProjectsController@acceptProposal');
-Route::match(['patch', 'delete'], '/projects/proposal/cancel/{projectID}/{proposalID}','ProjectsController@cancelProposal');
-
+//Route::match(['patch', 'delete'], '/projects/proposal/cancel/{projectID}/{proposalID}','ProjectsController@cancelProposal');
+Route::delete('/dashboard/{proposalID}','DashboardController@cancelProposal');
 
 
 

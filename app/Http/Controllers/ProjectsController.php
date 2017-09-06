@@ -84,84 +84,45 @@ class ProjectsController extends Controller
     {
         $allProposals = null;
         $availableGroups = null;
-
-
         if (auth()->guest()) {
             $project = Project::where(['is_private' => 0, 'id'=>$id])->get();
-            
+
             if(!$project){
                 return  redirect('/projects');
             }
-
             return view('projects.show')->with('project',$project[0]);
-
-        } elseif (auth()->user()->is_client) {
-
+        } else {
             // get the group id of the available proposals for the project
             $project = Project::with(array('proposals'=>function($query){
                 $query->select('project_id','group_id');
             }))->where('id',$id)->get();
-
             if ($project[0]->has_group) {
-
                 $acceptedProposal = Proposal::where(['project_id' =>$project[0]->id, 'group_id' => $project[0]->group_id])->get();
-                return view('projects.show')->with('project',$project[0])->with("proposal",$acceptedProposal[0]);                
-               
-            }             
+                return view('projects.show')->with('project',$project[0])->with("proposal",$acceptedProposal[0]);
 
-
+            }
             // find all the proposal made on project with the data of the group that made it
             $allProposals = Project::with('proposals.group')->where('id',$id)->get();
-           
+
             // Make a list of the groups owned by the user which hasn't made a proposal this project
             $proposalGroups = array(); // groups that have already made a proposal
             $groups = auth()->user()->groupOwner; // get the groups the developer is the owner of
-
             // create an array of the proposal group ids to help filter groups later
             foreach ($project[0]->proposals as $proposal) {
                 array_push($proposalGroups,$proposal->group_id);
             }
-
             $availableGroups = array(); // groups able to make a proposal for project
-            
+
             // remove groups that have already made a proposal on a project
             foreach ($groups as $group) {
                 if (!in_array($group->id, $proposalGroups)) {
                     array_push($availableGroups,$group);
                 }
             }
-
             if(!$project){
-              return  redirect('/projects');
+                return  redirect('/projects');
             }
-
-
-
             return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposals',$allProposals[0]->proposals);
-
-            } else {
-            $project = Project::with(array('proposals'=>function($query){
-                $query->select('project_id','group_id');
-            }))->where('id',$id)->get();
-
-            $user =  auth()->user()->load(['groupOwner', 'groupOwner.proposals']);
-            $props = array();
-
-            foreach ($user->groupOwner as $group) {
-                foreach ($group->proposals as $p) {
-                    array_push($props,$p);
-                }
-            }
-            $proposalsForDeveloper = array();
-            foreach ($props as $proposal){
-                if ($proposal->group_id == $project[0]->group_id){
-                    array_push($proposalsForDeveloper, $proposal);
-                }
-            }
-
-            return view('projects.show')->with('project',$project[0])->with('groups', $availableGroups)->with('proposalsForDeveloper',$proposalsForDeveloper);
-
-
         }
 
     }
@@ -277,19 +238,5 @@ class ProjectsController extends Controller
         
     }
 
-    public function cancelProposal($projectID, $proposalID){
-        $project = Project::find($projectID);
-        $proposal = Proposal::find($proposalID);
-        // check that the logged in user owns the project
-        if ($project->user_id == auth()->user()->id && $project->has_group) {
-            $project->has_group = false;
-            $project->group_id = null;
-            $project->update();
-            $proposal->delete();
-            return redirect('/projects/'.$projectID);
 
-        } else {
-            return redirect('/projects');
-        }
-    }
 }

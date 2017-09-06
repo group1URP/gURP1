@@ -44,7 +44,7 @@
                                 @foreach ($proposals as $proposal)
                                     <tr> <td><a href="/proposal/{{$proposal->id}}">{{$proposal->details}}</a></td> <td><a class="btn btn-warning" href="/proposal/{{ $group->id }}/edit">Edit</a></td> 
                                     <td>
-                                        {!! Form::open(['action' => ['GroupsController@destroy',$proposal->id], 'method' => 'POST']) !!}     
+                                        {!! Form::open(['action' => ['DashboardController@cancelProposal',$proposal->id], 'method' => 'POST']) !!}
                                         {{ Form::hidden('_method',"DELETE") }} 
                                         {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
                                         {!! Form::close() !!}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Group;
+use App\Proposal;
 
 class DashboardController extends Controller
 {
@@ -45,4 +46,16 @@ class DashboardController extends Controller
 
        
     }
+
+    public function cancelProposal($proposalID){
+
+        $proposal = Proposal::find($proposalID);
+        $proposal->delete();
+        return redirect('/dashboard');
+
+    }
+
+
+
+
 }
