@@ -15,16 +15,16 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top white-text">
+        <nav class="navbar navbar-default navbar-static-top white-text text-center navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed white-text" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="sr-only white-text">Toggle Navigation</span>
+                        <span class="icon-bar white-text"></span>
+                        <span class="icon-bar white-text"></span>
+                        <span class="icon-bar white-text"></span>
                     </button>
 
                     <!-- Branding Image -->
@@ -45,8 +45,9 @@
                         @if (Auth::guest())
                             <li><a class='white-text' href="/feed">Feed</a></li>
                             <li><a class='white-text' href="/browse">Browse</a></li>
-                            <li><a class='white-text' href="/about">About Us</a></li>
-                            <li><button type="button" class="btn btn-custom"><a type="button" class='white-text' href="{{ route('login') }}">Login</a></button></li>
+                            <li><a class='white-text' href="/#about">About Us</a></li>
+                            <li><a class='white-text' href="/#contact">Contact</a></li>
+                            <li><a type="button" class='white-text' href="{{ route('login') }}"><button type="button" class="btn btn-signIn">Login</button></a></li>
                             <!---<li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">

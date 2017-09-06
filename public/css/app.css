@@ -8353,48 +8353,103 @@ button.close {
 body {
   margin: 0%;
   min-height: 100%;
-  background-color: lightgrey;
+  background-color: #CDC4C4;
 }
 
-body .btn-custom {
-  margin-top: 5px;
+body .btn-signIn {
+  padding: 5px 15px;
+  margin-top: -5px;
   margin-left: 10px;
   border-width: 1px;
   border-color: #ffffff;
-  border-radius: 5px;
-  background-color: transparent;
+  border-radius: 20px;
+  background-color: transparent !important;
   text-decoration: none;
 }
 
-body .btn-custom a {
+body .btn-signIn a {
   text-decoration: none;
   color: #ffffff;
 }
 
+body .btn-signIn:hover {
+  background-color: #ffffff !important;
+  color: orangered;
+}
+
+body .btn-signIn:focus {
+  outline: none !important;
+}
+
 body #cover {
-  padding-top: 33%;
-  margin-top: -6%;
-  min-height: 100%;
+  padding: 12%;
+  min-height: 638px;
   min-width: 100%;
-  background: darkorange;
+  background: orangered;
 }
 
 body #cover .signUp {
   width: 150px;
   height: auto;
-  padding: 9px;
-  padding-right: 10px;
-  padding-left: 10px;
-  color: darkorange;
+  font-weight: bold;
+  padding: 5px 15px;
+  color: orangered;
   margin: 30px;
+  background-color: #fff;
+  border-radius: 20px !important;
 }
 
 body #cover .signUp a {
-  -webkit-text-decoration-color: darkorange;
-          text-decoration-color: darkorange;
-  color: darkorange;
+  -webkit-text-decoration-color: orangered;
+          text-decoration-color: orangered;
+  color: orangered;
   text-decoration: none;
   font-weight: bolder;
+}
+
+body #cover .signUp:hover {
+  background-color: lightgray !important;
+  color: orangered !important;
+}
+
+body #cover .signUp:focus {
+  outline: none;
+}
+
+body .about {
+  width: auto !important;
+  min-height: 900px;
+}
+
+body .about .heading {
+  padding-top: 45px;
+  padding-bottom: 50px;
+  width: auto;
+  height: 25px !important;
+}
+
+body .about .text {
+  width: auto;
+  height: 250px;
+}
+
+body .about .placeholder {
+  width: auto;
+  height: 250px;
+  border-width: 2px !important;
+  border-color: orangered !important;
+  border-radius: 5px !important;
+}
+
+body .fooStyle {
+  min-height: 550px !important;
+  background-color: #100400;
+  color: #6A4740 !important;
+}
+
+body .footerNav > li > a {
+  text-decoration: none;
+  color: #6A4740;
 }
 
 .white-text {
@@ -8402,7 +8457,7 @@ body #cover .signUp a {
 }
 
 .orange-text {
-  color: darkorange !important;
+  color: orangered !important;
 }
 
 .private {

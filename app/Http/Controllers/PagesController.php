@@ -18,7 +18,7 @@ class PagesController extends Controller
 
     public function about(){
        // $title = 'about page';
-        return view('pages.about');
+        return view('pages.index#about');
     }
 
     public function browse(){

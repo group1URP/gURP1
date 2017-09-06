@@ -1,47 +1,56 @@
 //cover
-$cover-bg: darkorange;
+$cover-bg: orangered;
 
 //text
-$orange-text: darkorange;
+$orange-text: orangered;
 $white-text: #ffffff;
 
 
 body {
     margin: 0%;
     min-height: 100%;
-    background-color: lightgrey;
+    background-color: #CDC4C4;
 
-    .btn-custom {
-        margin-top: 5px;
+    .btn-signIn {
+        padding: 5px 15px;
+        margin-top: -5px;
         margin-left: 10px;
         border-width: 1px;
         border-color: #ffffff;
-        border-radius: 5px;
-        background-color: transparent;
+        border-radius: 20px;
+        background-color: transparent !important;
         text-decoration: none;
 
         a {
             text-decoration: none;
             color: #ffffff;
         }
+    }
 
+    .btn-signIn:hover {
+        background-color: #ffffff !important;
+        color: orangered;
+    }
+
+    .btn-signIn:focus {
+        outline: none !important;
     }
 
     #cover {
-        padding-top: 33%;
-        margin-top: -6%;
-        min-height: 100%;
+        padding: 12%;
+        min-height: 638px;
         min-width: 100%;
         background: $cover-bg;
 
         .signUp {
             width: 150px;
             height: auto;
-            padding: 9px;
-            padding-right: 10px;
-            padding-left: 10px;
+            font-weight: bold; 
+            padding: 5px 15px;
             color: $orange-text;
             margin: 30px;
+            background-color: #fff;
+            border-radius: 20px !important;
 
             a {
                 text-decoration-color: $orange-text;
@@ -50,7 +59,54 @@ body {
                 font-weight: bolder;
             }
         }
+
+        .signUp:hover {
+            background-color: lightgray !important;
+            color: orangered !important;
+        }
+
+        .signUp:focus {
+            outline: none;
+        }
     }
+
+    .about {
+        width: auto !important;
+        min-height: 900px;
+
+        .heading {
+            padding-top: 45px;
+            padding-bottom: 50px;
+            width: auto;
+            height: 25px !important;
+        }
+
+        .text {
+            width: auto;
+            height: 250px;
+        }
+
+        .placeholder {
+            width: auto;
+            height: 250px;
+            border-width: 2px !important;
+            border-color: orangered !important;
+            border-radius: 5px !important;
+        }
+    }
+
+    .fooStyle {
+        min-height: 550px !important;
+        background-color: #100400;
+        color: #6A4740 !important;
+    }
+
+    .footerNav>li>a {
+        text-decoration: none;
+        color: #6A4740;
+    }
+
+
 }
 
 .white-text {
