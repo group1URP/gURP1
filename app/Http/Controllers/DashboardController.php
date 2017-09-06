@@ -47,11 +47,37 @@ class DashboardController extends Controller
        
     }
 
-    public function cancelProposal($proposalID){
+    public function cancelProposal(/*Request $request,*/ $proposalID/*, $has_reason*/){
 
         $proposal = Proposal::find($proposalID);
+        $project = Project::find($proposal->project_id);
+        if (!$project){
+            $proposal->delete();
+            return redirect('/dashboard');
+        }
+        /*Commented until we decide how to send the email
+         *
+        if (has_reason){
+        $reason = $request->input('reason');
+        Mail::send('mails.cancel_proposal_reason_mail', ['title' =>$proposal->details, 'content' => $reason], function ($message)
+        {
+
+            $message->from('test@gmail.com', 'test');
+
+            $message->to('test2@test.com');
+
+        });
+        $project->has_group = null;
+        $proposal->delete();
+        }else{
+            $proposal->delete();
+
+        }
+        */
         $proposal->delete();
         return redirect('/dashboard');
+
+
 
     }
 
