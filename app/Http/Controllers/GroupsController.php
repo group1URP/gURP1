@@ -71,7 +71,8 @@ class GroupsController extends Controller
     public function show($id)
     {
         //
-        $group = Group::find($id);
+        $group = Group::with(['proposals','proposals.project'])->find($id);
+        //return $group;
         return view('groups.show')->with('group',$group);
     }
 

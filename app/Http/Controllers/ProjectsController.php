@@ -230,6 +230,12 @@ class ProjectsController extends Controller
             $project->has_group = true;
             $project->group_id = $group;
             $project->save();
+
+
+            $proposal = Proposal::where(['project_id'=> $projectID, 'group_id' => $group])->get();
+            $proposal[0]->is_accepted = true;
+            $proposal[0]->update();
+
             return redirect('/projects/'.$projectID);
 
         } else {
