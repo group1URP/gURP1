@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\GroupRequest;
+use App\Developer;
 use Illuminate\Http\Request;
 
 class GroupsController extends Controller
@@ -132,5 +134,47 @@ class GroupsController extends Controller
         $group->delete();
 
         return redirect('/groups');
+    }
+
+    public function requestToJoin(Request $request, $groupID)
+    {    
+        if (auth()->user()->is_client) {
+            return redirect('/');
+        } 
+
+        $this->validate($request,[
+            'reason' => 'required'
+        ]);
+        $id = auth()->user()->id;
+        $dev = Developer::where(['user_id' => $id])->get();
+
+        $gReq = new GroupRequest;
+        $gReq->user_id = $id;
+        $gReq->group_id = $groupID;
+        $gReq->dev_id = $dev[0]->id;
+        $gReq->reason = $request->input('reason');
+
+        $gReq->save();
+
+        return redirect('/groups/' . $groupID);
+    }
+
+    public function requestOutcome(Request $request,$groupID, $gReq, $outcome)
+    {
+        $group = Group::find($groupID);
+
+        if ($group->user_id == auth()->user()->id) {
+            $groupRequest = GroupRequest::find($gReq);
+
+            $groupRequest->is_approved = $outcome;
+            $groupRequest->update();
+
+            return redirect('/groups/' . $groupID); 
+        }else
+        {
+            return redirect('/groups');
+        } 
+
+
     }
 }

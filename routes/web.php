@@ -24,6 +24,9 @@ Auth::routes();
 Route::resource('groups', 'GroupsController', ['middleware' => 'role']);
 Route::resource('projects', 'ProjectsController', ['middleware' => 'role' ]);
 
+Route::post('/joingroup/{groupID}','GroupsController@requestToJoin');
+Route::post('/joingroup/{groupID}/{reqID}/{outcome}','GroupsController@requestOutcome');
+
 //dashboard
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 

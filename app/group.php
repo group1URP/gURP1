@@ -27,9 +27,9 @@ class Group extends Model
     	return $this->hasMany('App\Proposal');
     }
 
-    public function hasProposal($id)
+    public function groupRequests()
     {
-    	return $this->find($id);
+        return $this->hasMany('App\GroupRequest');
     }
 
 }
