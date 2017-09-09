@@ -55,6 +55,18 @@ class UsersController extends Controller
         return ('profiles.dev_profile_edit')->with('user', $user);
     }
 
+    public function updateDeveloperProfile(Request $request, $id){
+
+        // $client = User::find($id)->client;
+
+        // $client->business_name = $request->input('business_name');
+        // $client->business_type = $request->input('business_type');
+
+
+        // $client->update();
+        return redirect("/dashboard");
+    }
+
 
 
 

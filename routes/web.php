@@ -44,5 +44,6 @@ Route::get('/client/edit/{id}', 'UsersController@editClientProfile');
 Route::put('/client/{id}', 'UsersController@updateClientProfile');
 
 //developers profiles
-Route::get('/developer/edit/{id}', 'UsersController@showDeveloperProfile');
-Route::put('/developer/edit/{id}', 'UsersController@editDeveloperProfile');
+Route::get('/developer/{id}', 'UsersController@showDeveloperProfile');
+Route::get('/developer/edit/{id}', 'UsersController@editDeveloperProfile');
+Route::put('/developer/{id}', 'UsersController@updateDeveloperProfile');
