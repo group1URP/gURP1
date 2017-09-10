@@ -13,6 +13,7 @@
         {{Form::text('business_type', $user->client->business_type, ['class' => 'form-control', 'placeholder' => 'Business Type'])}}
     </div>
     <div class="form-group">
+        {{Form::label('profile_picture', 'Profile Picture')}}
         {{Form::file('profile_picture')}}
     </div>
     {{Form::hidden('_method', 'PUT')}}
