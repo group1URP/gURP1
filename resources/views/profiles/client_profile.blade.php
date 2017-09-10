@@ -7,7 +7,7 @@
                     <div class="Username">
                         {{ $user->username }} ( <em>Client</em>)
                     </div>
-                    <img src="#" alt="profile pic">
+                    <img style="width:100%" src="/storage/profile_pictures/{{$user->client->profile_picture}}" alt="profile picture">
                 </div>
                 @if (Auth::user()->id == $user->client->user_id)
                     <a class ="btn btn-link" href="/client/edit/{{$user->id}}"><small>Edit profile</small></a>

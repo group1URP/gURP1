@@ -76,7 +76,8 @@ class RegisterController extends Controller
             Client::create([
                 'user_id' => $user->id,
                 'business_name' => '',
-                'business_type' => ''
+                'business_type' => '',
+                'profile_picture' => 'no_image.jpg'
                 ]);
         } else {
             Developer::create([

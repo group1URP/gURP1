@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -30,11 +30,28 @@ class UsersController extends Controller
 
     public function updateClientProfile(Request $request, $id){
 
+        $this->validate($request,[
+            'profile_picture' => 'image|nullable|max:1999'
+        ]);
+
+        if ($request->hasFile('profile_picture')){
+            $filenameWithExt = $request->file('profile_picture')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+            $fileNameToStore=$filename.'_'.time().'.'.$extension;
+            $path = $request->file('profile_picture')->storeAs('public/profile_pictures', $fileNameToStore);
+        }
+
         $user = User::find($id);
         $client = User::find($id)->client;
         $client->business_name = $request->input('business_name');
         $client->business_type = $request->input('business_type');
-
+        if ($request->hasFile('profile_picture')) {
+            if ($client->profile_picture != 'no_image.png'){
+                Storage::delete('public/profile_pictures/'.$client->profile_picture);
+            }
+            $client->profile_picture = $fileNameToStore;
+        }
 
         $client->update();
         return redirect("/dashboard")->with('success', 'Client profile \''.$user->username.'\' has been updated successfully');
