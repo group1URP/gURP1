@@ -42,11 +42,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Group');
     }
 
-    public function skills()
-    {
-        return $this->belongsToMany('App\Skill');
-    }
-
+    
     public function settings()
     {
         return $this->hasOne('App\Setting');
