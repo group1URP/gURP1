@@ -30,14 +30,14 @@ class UsersController extends Controller
 
     public function updateClientProfile(Request $request, $id){
 
+        $user = User::find($id);
         $client = User::find($id)->client;
-
         $client->business_name = $request->input('business_name');
         $client->business_type = $request->input('business_type');
 
 
         $client->update();
-        return redirect("/dashboard");
+        return redirect("/dashboard")->with('success', 'Client profile \''.$user->username.'\' has been updated successfully');
     }
 
 
@@ -56,15 +56,11 @@ class UsersController extends Controller
     }
 
     public function updateDeveloperProfile(Request $request, $id){
-
-        // $client = User::find($id)->client;
-
-        // $client->business_name = $request->input('business_name');
-        // $client->business_type = $request->input('business_type');
-
-
-        // $client->update();
-        return redirect("/dashboard");
+        $user = User::find($id);
+        $developer = User::find($id)->developer;
+        //todo: other infos here..
+        $developer.update();
+        return redirect("/dashboard")->with('success', 'Developer profile \''.$user->username.'\' has been updated successfully');
     }
 
 

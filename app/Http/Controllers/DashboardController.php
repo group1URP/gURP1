@@ -75,7 +75,7 @@ class DashboardController extends Controller
         }
         */
         $proposal->delete();
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Your proposal has been deleted successfully');;
 
 
 

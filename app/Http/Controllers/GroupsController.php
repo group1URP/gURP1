@@ -61,7 +61,7 @@ class GroupsController extends Controller
 
         $group->users()->attach(auth()->user()->id);
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Group \''.$group->name.'\' has been created successfully');
     }
 
     /**
@@ -118,7 +118,7 @@ class GroupsController extends Controller
 
         $group->save();
 
-        return redirect('/groups');
+        return redirect('/groups')->with('success', 'Group \''.$group->name.'\' has been updated successfully');
     }
 
     /**
@@ -130,10 +130,10 @@ class GroupsController extends Controller
     public function destroy($id)
     {
         $group = Group::find($id);
-
+        $group_name = $group->name;
         $group->delete();
 
-        return redirect('/groups');
+        return redirect('/groups')->with('success', 'Group \''.$group_name.'\' has been deleted successfully');
     }
 
     public function requestToJoin(Request $request, $groupID)
@@ -156,7 +156,7 @@ class GroupsController extends Controller
 
         $gReq->save();
 
-        return redirect('/groups/' . $groupID);
+        return redirect('/groups/' . $groupID)->with('success', 'Your request has been sent successfully');
     }
 
     public function requestOutcome(Request $request,$groupID, $gReq, $outcome)

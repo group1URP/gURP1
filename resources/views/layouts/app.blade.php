@@ -77,6 +77,7 @@
             </div>
         </nav>
         <div class="container">
+            @include('includes.messages')
             @yield('content')
         </div>
 

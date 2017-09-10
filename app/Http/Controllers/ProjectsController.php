@@ -71,7 +71,7 @@ class ProjectsController extends Controller
             $project->is_private = $request->input('private');
         }
         $project->save();
-        return redirect('/projects');
+        return redirect('/projects')->with('success', 'Project \''.$project->title.'\' has been created successfully');
     }
 
     /**
@@ -178,7 +178,7 @@ class ProjectsController extends Controller
 
 
 
-        return redirect('/projects');
+        return redirect('/projects')->with('success', 'Project \''.$project->title.'\' has been updated successfully');;
     }
 
     /**
@@ -196,7 +196,7 @@ class ProjectsController extends Controller
 
         $project->delete();
 
-        return redirect('/projects');
+        return redirect('/projects')->with('success', 'Project \''.$project->title.'\' has been deleted successfully');;
     }
 
     /*
@@ -218,7 +218,7 @@ class ProjectsController extends Controller
         $proposal->project_id = $id;
         $proposal->save();
 
-        return redirect('/projects');
+        return redirect('/projects')->with('success', 'your proposal has been submitted successfully');;
     }
 
     public function acceptProposal($projectID, $group)
@@ -236,7 +236,7 @@ class ProjectsController extends Controller
             $proposal[0]->is_accepted = true;
             $proposal[0]->update();
 
-            return redirect('/projects/'.$projectID);
+            return redirect('/projects/'.$projectID)->with('success', 'The proposal has been accepted successfully');;
 
         } else {
             return redirect('/projects');
