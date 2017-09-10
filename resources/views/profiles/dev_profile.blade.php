@@ -9,7 +9,7 @@
                     <div class="Username">
                        {{$user->username}} ( <em>Developer</em>)
                     </div>
-                    <img src="#" alt="profile pic">
+                    <img style="width:100%" src="/storage/profile_pictures/{{$user->developer->profile_picture}}" alt="profile picture">
                     @if (Auth::user()->id == $user->developers()->user_id)
                         <small><a class ="btn btn-link" href="#">Edit profile</a></small>
                     @endif

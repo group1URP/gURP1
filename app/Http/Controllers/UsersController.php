@@ -73,9 +73,28 @@ class UsersController extends Controller
     }
 
     public function updateDeveloperProfile(Request $request, $id){
+        
+         $this->validate($request,[
+            'profile_picture' => 'image|nullable|max:1999'
+        ]);
+
+         if ($request->hasFile('profile_picture')){
+            $filenameWithExt = $request->file('profile_picture')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+            $fileNameToStore=$filename.'_'.time().'.'.$extension;
+            $path = $request->file('profile_picture')->storeAs('public/profile_pictures', $fileNameToStore);
+        }
+
+
         $user = User::find($id);
         $developer = User::find($id)->developer;
         //todo: other infos here..
+         if ($developer->profile_picture != 'no_image.png'){
+                Storage::delete('public/profile_pictures/'.$developer->profile_picture);
+            }
+            $developer->profile_picture = $fileNameToStore;
+            
         $developer.update();
         return redirect("/dashboard")->with('success', 'Developer profile \''.$user->username.'\' has been updated successfully');
     }
