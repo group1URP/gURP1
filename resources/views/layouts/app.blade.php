@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ asset('img/favicon1.png') }}" />
+
 </head>
 <body>
     <div id="app">
@@ -20,11 +24,11 @@
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed white-text" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only white-text">Toggle Navigation</span>
-                        <span class="icon-bar white-text"></span>
-                        <span class="icon-bar white-text"></span>
-                        <span class="icon-bar white-text"></span>
+                    <button type="button" class="navbar-toggle hamburger collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
 
                     <!-- Branding Image -->
@@ -43,9 +47,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a class='white-text' href="/feed">Feed</a></li>
                             <li><a class='white-text' href="/browse">Browse</a></li>
-                            <li><a class='white-text' href="/#about">About Us</a></li>
+                            <li><a class='white-text' href="/#about">How It Works?</a></li>
                             <li><a class='white-text' href="/#contact">Contact</a></li>
                             <li><a type="button" class='white-text' href="{{ route('login') }}"><button type="button" class="btn btn-signIn">Login</button></a></li>
                             <!---<li><a href="{{ route('register') }}">Register</a></li> -->
@@ -60,7 +63,6 @@
                                         <a class='white-text' href="{{ route('home') }}">
                                             Dashboard
                                         </a>
-
                                     </li>
                                     <li>
                                         <a class='white-text' href="{{ route('logout') }}"
@@ -88,5 +90,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}" ></script>
+  <!--  <script type="text/javascript" src="{{asset('js/jquery.min.js')}}" ></script> -->
 </body>
 </html>

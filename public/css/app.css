@@ -8356,6 +8356,12 @@ body {
   background-color: #CDC4C4;
 }
 
+body .hamburger {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #ffffff;
+}
+
 body .btn-signIn {
   padding: 5px 15px;
   margin-top: -5px;
@@ -8382,9 +8388,10 @@ body .btn-signIn:focus {
 }
 
 body #cover {
-  padding: 12%;
-  min-height: 638px;
+  padding-top: 30%;
+  min-height: 662px;
   min-width: 100%;
+  width: auto;
   background: orangered;
 }
 
@@ -8436,20 +8443,17 @@ body .about .text {
 body .about .placeholder {
   width: auto;
   height: 250px;
-  border-width: 2px !important;
-  border-color: orangered !important;
-  border-radius: 5px !important;
 }
 
 body .fooStyle {
   min-height: 550px !important;
   background-color: #100400;
-  color: #6A4740 !important;
+  color: #80615B !important;
 }
 
 body .footerNav > li > a {
   text-decoration: none;
-  color: #6A4740;
+  color: #80615B;
 }
 
 .white-text {

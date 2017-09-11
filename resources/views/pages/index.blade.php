@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class='row'>
-                <div class='col col-lg-6 col-md-6 col-sm-6 text-center'>
+                <div class='col col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center'>
                     <h1>lorem ipsum dolor </h1>
                     <p class='text'>
                             lorem ipsum dolor sit amet, consecteur adisci
@@ -43,19 +43,19 @@
                             sum. Nam...
                     </p>
                 </div>
-                <div class='col col-lg-6 col-md-6 col-sm-6 text-center'>
+                <div class='col col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center'>
                     <p class='placeholder'>
                            <img src='img/place_holder.png' alt='place holder'></img><br> img-holder
                     </p>
                 </div>
             </div>
             <div class='row'>
-                <div class='col-lg-6 col-md-6 col-sm-6 text-center'>
+                <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center'>
                     <p class='placeholder'>
                         <img src='img/place_holder.png' alt='place holder'></img><br> img-holder
                     </p>
                 </div>
-                <div class='col col-lg-6 col-md-6 col-sm-6 text-center'>
+                <div class='col col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center'>
                     <h1>lorem ipsum dolor </h1>
                     <p class='text'>
                             lorem ipsum dolor sit amet, consecteur adisci
@@ -67,7 +67,6 @@
             </div>
         </div>
     </div>
-<a href='/#id' >click</a>
 
     <!-------------------------------- end of how it works ---------------->
 

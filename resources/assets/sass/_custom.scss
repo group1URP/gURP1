@@ -10,6 +10,14 @@ body {
     margin: 0%;
     min-height: 100%;
     background-color: #CDC4C4;
+    
+    .hamburger {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        color: #ffffff;
+    }
+
+    
 
     .btn-signIn {
         padding: 5px 15px;
@@ -29,7 +37,7 @@ body {
 
     .btn-signIn:hover {
         background-color: #ffffff !important;
-        color: orangered;
+        color: $cover-bg;
     }
 
     .btn-signIn:focus {
@@ -37,9 +45,10 @@ body {
     }
 
     #cover {
-        padding: 12%;
-        min-height: 638px;
+        padding-top: 30%;
+        min-height: 662px;
         min-width: 100%;
+        width: auto;
         background: $cover-bg;
 
         .signUp {
@@ -62,7 +71,7 @@ body {
 
         .signUp:hover {
             background-color: lightgray !important;
-            color: orangered !important;
+            color: $orange-text !important;
         }
 
         .signUp:focus {
@@ -89,21 +98,18 @@ body {
         .placeholder {
             width: auto;
             height: 250px;
-            border-width: 2px !important;
-            border-color: orangered !important;
-            border-radius: 5px !important;
         }
     }
 
     .fooStyle {
         min-height: 550px !important;
         background-color: #100400;
-        color: #6A4740 !important;
+        color: #80615B !important;
     }
 
     .footerNav>li>a {
         text-decoration: none;
-        color: #6A4740;
+        color: #80615B;
     }
 
 

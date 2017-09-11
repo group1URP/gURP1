@@ -13,9 +13,9 @@
 
 //landingpage
 Route::get('/', 'PagesController@index');
-Route::get('/#about', 'PagesController@about');
 Route::get('/browse', 'PagesController@browse');
-Route::get('/feed', 'PagesController@feed');
+##removed feed link
+##Route::get('/feed', 'PagesController@feed');
 
 Auth::routes();
 

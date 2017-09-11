@@ -10,16 +10,11 @@ class PagesController extends Controller
         $title = 'Welcome to laravel!';
         return view('pages.index')->with('title', $title);
     }
-
-    public function feed(){
-       // $title = 'this is feeds page';
-        return view('pages.feed');
-    }
-
-    public function about(){
-       // $title = 'about page';
-        return view('pages.index#about');
-    }
+//removed feed link
+//   public function feed(){
+//     $title = 'this is feeds page';
+//        return view('pages.feed');
+//    }
 
     public function browse(){
        // $title = 'browse';
