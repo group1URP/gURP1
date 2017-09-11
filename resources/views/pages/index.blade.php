@@ -96,4 +96,5 @@
 
     <footer>
     <!-------------------------------- end of footer ---------------->
+    <a href="javascript:void(0);" id="toTop" title="Scroll to Top" style="display: none;">Top<span></span></a>
 @endsection
