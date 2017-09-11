@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use App\Skill;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -47,14 +48,16 @@ class UsersController extends Controller
         $client->business_name = $request->input('business_name');
         $client->business_type = $request->input('business_type');
         if ($request->hasFile('profile_picture')) {
+
             if ($client->profile_picture != 'no_image.png'){
-                Storage::delete('public/profile_pictures/'.$client->profile_picture);
+                
+               Storage::delete('public/profile_pictures/'.$client->profile_picture);
             }
             $client->profile_picture = $fileNameToStore;
         }
 
         $client->update();
-        return redirect("/dashboard")->with('success', 'Client profile \''.$user->username.'\' has been updated successfully');
+        return redirect("/client/".$id)->with('success', 'Client profile has been updated successfully');
     }
 
 
@@ -69,12 +72,13 @@ class UsersController extends Controller
 
     public function editDeveloperProfile($id){
         $user = User::find($id);
-        return view('profiles.dev_profile_edit')->with('user', $user);
+        $skills = Skill::pluck('skill','id');       
+        return view('profiles.dev_profile_edit')->with('user', $user)->with('skills',$skills);
     }
 
     public function updateDeveloperProfile(Request $request, $id){
         
-         $this->validate($request,[
+        $this->validate($request,[
             'profile_picture' => 'image|nullable|max:1999'
         ]);
 
@@ -90,13 +94,35 @@ class UsersController extends Controller
         $user = User::find($id);
         $developer = User::find($id)->developer;
         //todo: other infos here..
-         if ($developer->profile_picture != 'no_image.png'){
+
+        $skills = $developer->skills->pluck('id');
+
+        $d = Skill::where(['id' => $developer->id])->pluck('id');        
+
+        if ($request->hasFile('profile_picture')) {
+
+            if ($developer->profile_picture != 'no_image.png'){
                 Storage::delete('public/profile_pictures/'.$developer->profile_picture);
             }
+
             $developer->profile_picture = $fileNameToStore;
-            
-        $developer.update();
-        return redirect("/dashboard")->with('success', 'Developer profile \''.$user->username.'\' has been updated successfully');
+        }
+
+        if (count($request->input("skills")) > 0) {
+            $currentSkills = $developer->skills->pluck('id')->toArray();
+            $newSkills = $request->input("skills");
+
+            $addSkills=array_diff($newSkills,$currentSkills);
+            $removeSkills=array_diff($currentSkills,$newSkills);
+
+            $developer->skills()->detach($removeSkills); 
+            $developer->skills()->attach($addSkills);
+        }        
+
+        
+                    
+        $developer->update();
+        return redirect("/developer/".$id)->with('success', 'Developer profile has been updated successfully');
     }
 
 

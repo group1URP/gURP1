@@ -8,10 +8,14 @@
         {{Form::label('profile_picture', 'Profile Picture')}}
         {{Form::file('profile_picture')}}
     </div>
+    <div class="form-group">
+        {{Form::label('skills[]', 'Skills')}}
+        {{ Form::select('skills[]', $skills, null,['multiple' => 'multiple', 'class' => 'form-control']) }}
+    </div>
+
+
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
-
-
 
 @endsection
