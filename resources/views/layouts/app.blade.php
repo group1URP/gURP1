@@ -53,10 +53,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('home') }}">
-                                            Dashboard
-                                        </a>
-
+                                        <a href="{{ route('home') }}">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/{{ Auth::user()->is_client ? 'client': 'developer'}}/{{ Auth::user()->id }}">Profile</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

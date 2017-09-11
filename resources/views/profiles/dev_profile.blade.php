@@ -19,13 +19,13 @@
             <div class="col-md-8 col-sm-8">
                 <h2>Skills</h2>
                 @foreach ($user->developer->skills as $skill)
-                    <span style="border-radius: 10px;
+                    <a href="/developer/skill/{{ $skill->id }}" style="border-radius: 10px;
                             padding: 5px 10px;
                             background-color: darkseagreen;
                             font-size: 18px;
                             font-weight: bold;
                             margin-right: 8px;
-                            color: white;">{{ $skill->skill }}</span>
+                            color: white;">{{ $skill->skill }}</a>
                 @endforeach
             </div>
         </div>
