@@ -159,6 +159,7 @@ class GroupsController extends Controller
         return redirect('/groups/' . $groupID)->with('success', 'Your request has been sent successfully');
     }
 
+    // update the approval of a group request
     public function requestOutcome(Request $request,$groupID, $gReq, $outcome)
     {
         $group = Group::find($groupID);
