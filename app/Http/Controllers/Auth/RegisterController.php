@@ -81,7 +81,8 @@ class RegisterController extends Controller
                 ]);
         } else {
             Developer::create([
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'profile_picture' => 'no_image.jpg'
                 ]);
         }
         

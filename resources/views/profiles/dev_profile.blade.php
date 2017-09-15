@@ -27,6 +27,8 @@
                             margin-right: 8px;
                             color: white;">{{ $skill->skill }}</a>
                 @endforeach
+                <h2>About</h2>
+                <p>{{$user->developer->about}}</p>
             </div>
         </div>
     @else

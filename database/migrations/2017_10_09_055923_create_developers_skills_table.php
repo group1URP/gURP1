@@ -14,11 +14,11 @@ class CreateDevelopersSkillsTable extends Migration
     public function up()
     {
         Schema::create('developer_skill', function (Blueprint $table) {    
-            $table->integer('dev_id')->unsigned();
-            $table->foreign('dev_id')->references('id')->on('developers');
+            $table->integer('developer_id')->unsigned();
+            $table->foreign('developer_id')->references('id')->on('developers');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skills');
-            $table->primary(['dev_id', 'skill_id']);
+            $table->primary(['developer_id', 'skill_id']);
         });
     }
 

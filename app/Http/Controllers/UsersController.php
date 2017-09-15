@@ -119,6 +119,7 @@ class UsersController extends Controller
             $developer->skills()->attach($addSkills);
         }        
 
+        $developer->about =  strlen($request->input("about")) >0 ? $request->input("about") : '';
         
                     
         $developer->update();

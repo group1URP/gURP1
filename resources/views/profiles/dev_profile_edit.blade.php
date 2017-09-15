@@ -9,6 +9,10 @@
         {{Form::file('profile_picture')}}
     </div>
     <div class="form-group">
+        {{Form::label('about', 'Additional Information')}}
+        {{Form::textarea('about', $user->developer->about, ['class' => 'form-control', 'placeholder' => 'Additional Information'])}}
+    </div>
+    <div class="form-group">
         {{Form::label('skills[]', 'Skills')}}
         {{ Form::select('skills[]', $skills, null,['multiple' => 'multiple', 'class' => 'form-control']) }}
     </div>
