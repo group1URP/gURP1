@@ -151,7 +151,7 @@ class GroupsController extends Controller
         $gReq = new GroupRequest;
         $gReq->user_id = $id;
         $gReq->group_id = $groupID;
-        $gReq->dev_id = $dev[0]->id;
+        $gReq->developer_id = $dev[0]->id;
         $gReq->reason = $request->input('reason');
 
         $gReq->save();
@@ -167,6 +167,7 @@ class GroupsController extends Controller
             $groupRequest = GroupRequest::find($gReq);
 
             $groupRequest->is_approved = $outcome;
+            $group->users()->attach($groupRequest->user_id);
             $groupRequest->update();
 
             return redirect('/groups/' . $groupID); 

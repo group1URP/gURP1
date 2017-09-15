@@ -18,10 +18,11 @@
 
     @if (Auth::user()->id == $group->user_id)
         <h2>Join Requests</h2>
+
         @foreach ($group->groupRequests as $req)
-            @if (is_null($req->is_approved))
+            @if (!$req->is_approved)
                 <div class="well">
-                    <p style="margin:0px">User: <a href="/developers/{{ $req->dev_id }}">View User Profile</a><br>Reason: {{ $req->reason }} </p>
+                    <p style="margin:0px">User: <a href="/developers/{{ $req->developer_id }}">View User Profile</a><br>Reason: {{ $req->reason }} </p>
                     
                     {!!Form::open(['action' => ['GroupsController@requestOutcome',$group->id, $req->id, 1], 'method' =>'POST','style' => 'display:inline;'])!!}                
                     {{Form::submit('Accept', ['class' => 'btn btn-success'])}}
@@ -41,8 +42,8 @@
             <p style="margin:0px">Project: <a href="/projects/{{ $proposal->project->id }}">{{ $proposal->project->title }}</a><br>Status: {{ $proposal->is_accepted == 0 ? 'Not Accepted' : 'Accepted' }} </p>
         </div>
     @endforeach
-
-    @if (Auth::user()->id != $group->user_id)
+    
+    @if (Auth::user()->id != $group->user_id && count($group->users) < $group->max_size)
         <h2>Request to join group</h2>
         {!!Form::open(['action' => ['GroupsController@requestToJoin', $group->id], 'method' =>'POST'])!!}
         <div class="form-group">

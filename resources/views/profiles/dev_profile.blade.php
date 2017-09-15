@@ -17,18 +17,20 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-8">
-                <h2>Skills</h2>
-                @foreach ($user->developer->skills as $skill)
-                    <a href="/developer/skill/{{ $skill->id }}" style="border-radius: 10px;
-                            padding: 5px 10px;
-                            background-color: darkseagreen;
-                            font-size: 18px;
-                            font-weight: bold;
-                            margin-right: 8px;
-                            color: white;">{{ $skill->skill }}</a>
-                @endforeach
-                <h2>About</h2>
-                <p>{{$user->developer->about}}</p>
+                <div class="well">
+                    <h2>Skills</h2>
+                    @foreach ($user->developer->skills as $skill)
+                        <a href="/developer/skill/{{ $skill->id }}" style="border-radius: 10px;
+                                padding: 5px 10px;
+                                background-color: darkseagreen;
+                                font-size: 18px;
+                                font-weight: bold;
+                                margin-right: 8px;
+                                color: white;">{{ $skill->skill }}</a>
+                    @endforeach
+                    <h2>About</h2>
+                    <p>{{$user->developer->about}}</p>
+                </div>
             </div>
         </div>
     @else

@@ -19,8 +19,8 @@ class CreateGroupRequestsTable extends Migration
             $table->boolean('is_approved')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('dev_id')->unsigned()->nullable();
-            $table->foreign('dev_id')->references('id')->on('developers');
+            $table->integer('developer_id')->unsigned()->nullable();
+            $table->foreign('developer_id')->references('id')->on('developers');
             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamps();
