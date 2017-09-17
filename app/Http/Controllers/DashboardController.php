@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function index()
     {
         if (auth()->user()->is_client) {
-             return view('client_dashboard')->with('projects',auth()->user()->projects);
+             return view('client_dashboard')->with('projects',auth()->user()->projects)->with('user', auth()->user());
         } else {
             $user =  auth()->user()->load(['groupOwner', 'groupOwner.proposals']);
             $props = array();
@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
             // return gettype($props[0]);
             // return $props;
-             return view('dev_dashboard')->with('groups',auth()->user()->groups)->with('proposals',$props);
+             return view('dev_dashboard')->with('groups',auth()->user()->groups)->with('proposals',$props)->with('user', $user);
         }
         
 

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Dashboard <a class ="btn btn-link pull-right" href="/client/edit/{{$user->id}}"><small>Edit profile</small></a></div>
 
                 <div class="panel-body">
                     @if (session('status'))
