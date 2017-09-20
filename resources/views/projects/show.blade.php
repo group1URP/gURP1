@@ -16,7 +16,7 @@
     @if (!Auth::guest())
         @if (Auth::user()->id == $project->user_id)
             <a href="/projects/{{$project->id}}/edit" class="btn btn-default">Edit</a>
-            <a href="#" class="btn btn-success">Confirm</a>
+
 
             {!! Form::open(['action' => ['ProjectsController@destroy', $project->id], 'method' =>'POST', 'class' => 'pull-right'])!!}
             {{Form::hidden('_method', 'DELETE')}}
